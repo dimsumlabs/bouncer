@@ -56,17 +56,16 @@ function enableSubmit() {
 				<div class="well">
 				<form action="submit.php" method="POST" onsubmit="return validateForm();">
 					<div class="form-group">
-						<label for="email">E-mail | 邮件地址</label>
+						<label for="email">E-mail | 郵件地址</label>
 						<input id="email" type="email" class="form-control" name="email" required />
 					</div>
 					<div class="form-group">
-						<label for="amount">Amount paid in cash | 会员费</label>
+						<label for="amount">Amount paid in cash | 會員費</label>
 						<select name="amount" id="amount" class="form-control">
-							<option value="0">-- Pick membership period | 选择会员时间 --</option>
-							<option value="100">100 RMB = 1 month 1个月</option>
-							<option value="450">450 RMB = 6 months 6个月</option>
-							<option value="900">900 RMB = 12 months 12个月</option>
-							<option value="5000">5000 RMB = 12 months sponsor 12个月赞助人</option>
+							<option value="0">-- Pick membership period | 選擇會員時間 --</option>
+							<option value="500">500 HKD = 1 month 1個月</option>
+							<option value="1800">1800 HKD = 12 months student 12個月學生</option>
+							<option value="5000">5000 HKD = 12 months 12個月</option>
 						</select>
 					</div>
 					<div class="form-group" align="right">

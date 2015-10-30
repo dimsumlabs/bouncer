@@ -13,11 +13,11 @@ $amount = (int)$_POST['amount'];
 $email = trim($_POST['email']);
 if (!filter_var($email, FILTER_VALIDATE_EMAIL))
 	mail_and_die('invalid email', __FILE__);
-if ($amount == '100')
+if ($amount == '200')
 	$months = 1;
-else if ($amount == '450')
-	$months = 6;
-else if ($amount == '900')
+else if ($amount == '500')
+	$months = 1;
+else if ($amount == '1800')
 	$months = 12;
 else if ($amount == '5000')
 	$months = 12;
