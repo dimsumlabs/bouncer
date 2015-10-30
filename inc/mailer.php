@@ -13,12 +13,12 @@ $mail->Host       = 'smtp.sendgrid.net';   // sets GMAIL as the SMTP server
 $mail->Port       = 465;                   // set the SMTP port for the GMAIL server
 
 
-$mail->Username   = 'xinchejian';          // GMAIL/sendgrid username
+$mail->Username   = 'dimsumlabs';          // GMAIL/sendgrid username
 // add SetEnv SMTP_PASSWORD "blah" to this site's Apache conf
 $mail->Password   = getenv('SMTP_PASSWORD');              // GMAIL/sendgrid password
 
-$mail->From       = 'bouncer@xinchejian.com';
-$mail->FromName   = 'Xinchejian Bouncer';
+$mail->From       = 'bouncer@dimsumlabs.com';
+$mail->FromName   = 'Dim Sum Labs Bouncer';
 
 $mail->WordWrap   = 60; // set word wrap
 
@@ -36,6 +36,6 @@ function mailer($mail_to, $subject, $body)
 
 function mail_and_die($subject, $body)
 {
-  mailer('it@xinchejian.com', $subject, $body);
+  mailer('it@dimsumlabs.com', $subject, $body);
   die($subject."\n".$body);
 }

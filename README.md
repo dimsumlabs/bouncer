@@ -1,5 +1,5 @@
 # bouncer
-The Xinchejian payment/door/membership system! Allows members to register their (cash) payment and receive a password.
+The Dim Sum Labs payment/door/membership system! Allows members to register their (cash) payment and receive a password.
 This password can be used to open the door. Once you open the door, your device may access members' Wi-Fi.
 
 ## Structure

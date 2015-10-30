@@ -53,7 +53,7 @@ if ($link->changes() != 1)
 $link->close();
 unset($link);
 
-$subject = 'Welcome to Xinchejian 欢迎加入新车间';
+$subject = 'Welcome to Dim Sum Labs 欢迎加入點心樂部';
 $body = "Welcome! 欢迎！
 
 You can now open the door by going to http://bouncer/
@@ -68,7 +68,7 @@ if ($isnew)
 	$neworold = "New";
 else
 	$neworold = "Old";
-mailer('finances@xinchejian.com', "$neworold member: $email, paid $amount for $months month(s).", '-- '.__FILE__);
+mailer('finances@dimsumlabs.com', "$neworold member: $email, paid $amount for $months month(s).", '-- '.__FILE__);
 
 header('Location: welcome.html', true, 303);
 

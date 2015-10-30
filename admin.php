@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>XCJ payment verification</title>
+  <title>DSL payment verification</title>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
   <meta name='viewport' content='width=320'/>
   <script type="text/javascript" language="javascript"><!--

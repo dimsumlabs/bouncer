@@ -6,17 +6,17 @@ require 'inc/mailer.php';
 require 'inc/db.php';
 
 
-$subject = 'Xinchejian membership reminder 新车间会员资格到期提醒';
-$body = 'Dear Xinchejian member,
+$subject = 'Dim Sum Labs membership reminder 點心樂部会员资格到期提醒';
+$body = 'Dear Dim Sum Labs member,
 
-Your membership with Xinchejian is about to expire today. Please renew your membership to be able to get into the space.
+Your membership with Dim Sum Labs is about to expire today. Please renew your membership to be able to get into the space.
 
 Thanks for your continuous support!
 
 
-亲爱的新车间会员，
+亲爱的點心樂部会员，
 
-您在新车间的会员资格即将于今日到期。为了正常使用新车间的空间设施，请为您的会员资格续费！
+您在點心樂部的会员资格即将于今日到期。为了正常使用點心樂部的空间设施，请为您的会员资格续费！
 
 谢谢您一如既往的支持！
 
