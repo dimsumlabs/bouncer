@@ -20,11 +20,13 @@ CREATE TABLE `Users` (
   `paid` date DEFAULT NULL,
   `since` date NOT NULL,
   `count` int(11) NOT NULL DEFAULT 0,
-  `mac` char(40) DEFAULT NULL
+  `mac` char(40) DEFAULT NULL,
+  `rfid` char(64) DEFAULT NULL
 );
 CREATE UNIQUE INDEX `IDX_Users_EMAIL` ON `Users`(`email`);
 CREATE UNIQUE INDEX `IDX_Users_PASSWORD` ON `Users`(`password`);
 CREATE UNIQUE INDEX `IDX_Users_MAC` ON `Users`(`mac`);
+CREATE UNIQUE INDEX `IDX_Users_RFID` ON `Users`(`rfid`);
 
 CREATE TRIGGER [UpdateLastTime]
   AFTER UPDATE
