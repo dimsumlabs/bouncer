@@ -9,15 +9,15 @@ $mail->IsSMTP();
 $mail->SMTPAuth   = true;                  // enable SMTP authentication
 $mail->SMTPSecure = 'ssl';                 // sets the prefix to the servier
 $mail->CharSet    = 'UTF-8';
-$mail->Host       = 'smtp.sendgrid.net';   // sets GMAIL as the SMTP server
+$mail->Host       = 'smtp.gmail.com';   // sets GMAIL as the SMTP server
 $mail->Port       = 465;                   // set the SMTP port for the GMAIL server
 
 
-$mail->Username   = 'dimsumlabs';          // GMAIL/sendgrid username
+$mail->Username   = 'dsl.bouncer@g'.'mail.com';          // GMAIL/sendgrid username
 // add SetEnv SMTP_PASSWORD "blah" to this site's Apache conf
 $mail->Password   = getenv('SMTP_PASSWORD');              // GMAIL/sendgrid password
 
-$mail->From       = 'bouncer@dimsumlabs.com';
+$mail->From       = 'dsl.bouncer@g'.'mail.com';
 $mail->FromName   = 'Dim Sum Labs Bouncer';
 
 $mail->WordWrap   = 60; // set word wrap
@@ -36,6 +36,6 @@ function mailer($mail_to, $subject, $body)
 
 function mail_and_die($subject, $body)
 {
-  mailer('it@dimsumlabs.com', $subject, $body);
+  mailer('lio+dsl@l'.'unesu.com', $subject, $body);
   die($subject."\n".$body);
 }
