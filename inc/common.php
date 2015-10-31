@@ -21,31 +21,16 @@ function find_mac()
 
 function open_door()
 {
-	// TEMP: use md5sum over Date, random salt and shared secret
-	$req = "pin=0326&action=open";
+	ignore_user_abort(true);
 
-	$header  = "POST / HTTP/1.1\r\n";      // HTTP POST request
-	$header .= "Content-Type: application/x-www-form-urlencoded\r\n";
-	$header .= "Content-Length: " . strlen($req) . "\r\n\r\n";
+	header('Location: welcomeback.html', true, 303);
+	header("Connection: close");
+	header("Content-Length: 0");
+	ob_end_flush();
+	flush();
 
-	// Open a socket for the acknowledgement request
-	$fp = fsockopen('10.0.10.10', 80, $errno, $errstr, 30);
-        if ($fp)
-        {
-	        fputs($fp, $header . $req);
-        	while (!feof($fp))
-	        	$res = fgets ($fp, 1024);
-        	fclose($fp);
+	//exec('/usr/bin/ssh -i /var/rpc_id_rsa root@10.0.10.5 ./add_mac.sh '.$mac);
 
-	        header('Location: welcomeback.html', true, 303);
-
-        	exec('/usr/bin/ssh -i /var/rpc_id_rsa root@10.0.10.5 ./add_mac.sh '.$mac);
-        }
-        else
-        {
-                $fperr = $errstr;
-	        header('Location: dooroffline.html', true, 303);
-                require_once 'mailer.php';
-		mail_and_die('The door is offline', 'fsockopen returned: '.$fperr);
-        }
+	exec('/home/pi/door/dootdoorlock/door.sh openclose');
+        // TODO: check return value?
 }
