@@ -29,8 +29,5 @@ function open_door()
 	ob_end_flush();
 	flush();
 
-	//exec('/usr/bin/ssh -i /var/rpc_id_rsa root@10.0.10.5 ./add_mac.sh '.$mac);
-
-	exec('/home/pi/door/dootdoorlock/door.sh openclose');
-        // TODO: check return value?
+	exec('doorctl door_open');
 }
