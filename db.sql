@@ -13,8 +13,8 @@ CREATE INDEX `IDX_Payments_EMAIL` ON `Payments`(`email`);
 CREATE TABLE `Users` (
   `id` integer NOT NULL PRIMARY KEY AUTOINCREMENT,
   `email` char(64) NOT NULL,
-  `password` char(32) NULL,
-  `salt` char(32) NULL,
+  `password` char(32) DEFAULT NULL,
+  `salt` char(32) DEFAULT NULL,
   `last_update` timestamp DEFAULT CURRENT_TIMESTAMP,
   `paid_verified` date DEFAULT NULL,
   `paid` date DEFAULT NULL,
