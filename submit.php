@@ -56,7 +56,7 @@ unset($link);
 $subject = 'Welcome to Dim Sum Labs 欢迎加入點心樂部';
 $body = "Welcome! 欢迎！
 
-You can now open the door by going to http://bouncer/
+You can now open the door by going to http://door/
 PIN: $password
 
 Note that your access will be revoked if no payment was made.
