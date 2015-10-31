@@ -14,7 +14,7 @@ $result = $link->query("SELECT email,amount FROM Payments WHERE id = $paymentid;
 
 if ($row = $result->fetchArray())
 	$amount = $row['amount'];
-if ($amount == '200')
+if ($amount == '150')
 	$months = 1;
 else if ($amount == '500')
 	$months = 1;
