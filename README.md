@@ -21,7 +21,7 @@ The SQLite DB schema create script can be found in `db.sql`.
 ## To-Do
 * Cronjob for membership reminders DONE: `checkpaid.php`
 * Need "Access denied" page DONE: `accessdenied.html`
-* Cronjob for DB backups
+* Cronjob for DB backups DONE: see `/etc/cron.daily/backupbouncer`
 * Push-to-deploy DONE: `git push pi@door:/var/www`
 
 ## Prerequisites
