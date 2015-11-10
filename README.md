@@ -12,7 +12,8 @@ There are three entry points:
 1. Pay money in envelope, write name on it
 1. Scan the QR code at the box
 1. Fill in name/email and payment
-1. Get email with code for door
+1. Get email with PIN for door
+1. Go to http://door/ to enter PIN, optionally swipe Octopus
 
 ## SQL
 The SQLite DB schema create script can be found in `db.sql`.
