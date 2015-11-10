@@ -4,6 +4,7 @@ require 'inc/mailer.php';
 require 'inc/db.php';
 
 
+$rfid = $_POST['rfid'];
 $password = $_POST['password'];
 $password2 = $link->escapeString($password);
 
@@ -13,8 +14,12 @@ if ($mac)
 	$mac2 = ", mac = '".sha1('salT'.$mac)."'";
 else
 	$mac2 = '';
+if ($rfid)
+        $rfid2 = ", rfid = '".$link->escapeString($rfid)."'";
+else
+        $rfid2 = '';
 
-$link->exec('UPDATE Users SET count = count + 1'.$mac2." WHERE DATE('now') <= paid AND password = '$password2'")
+$link->exec('UPDATE Users SET count = count + 1'.$mac2.$rfid2." WHERE DATE('now') <= paid AND password = '$password2'")
 	or mail_and_die('link->exec UPDATE error', __FILE__);
 
 if ($link->changes() != 1)

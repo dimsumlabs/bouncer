@@ -11,8 +11,33 @@
 	<!-- Bootstrap -->
 	<link href="css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="css/bouncer.css">
+        <script>
+(function() {
+  function lastrfid() {
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState == 4) {
+        if (xhr.status == 200) {
+          document.getElementById("rfid").value = xhr.responseText;
+          document.getElementById("rfidgroup").style.display = "";
+        }
+        else {
+          setTimeout(lastrfid, 500);
+        }
+      }
+    };
+    xhr.open("GET", "lastrfid.php");
+    xhr.send();
+  }
+  function init() {
+    document.getElementById("pin").focus();
+    lastrfid();
+  }
+  window.addEventListener("load", init);
+})();
+        </script>
 </head>
-<body onload='document.getElementById("pin").focus()'>
+<body>
 
 	<div class="container">
 
@@ -30,10 +55,16 @@
 							</span>
 							<input id="pin" type="number" class="form-control" placeholder="PIN" name="password" required />
 							<span class="input-group-btn">
-								<button class="btn btn-default" type="submit" name="action" value="Open 开门">
+								<button class="btn btn-default" type="submit" name="action">
 								Open 開門
 								</button>
 							</span>
+						</div><!-- /input-group -->
+						<div id="rfidgroup" style="display:none" class="input-group">
+							<span class="input-group-addon">
+								Associate RFID:
+							</span>
+							<input id="rfid" type="text" readonly class="form-control" placeholder="RFID" name="rfid" required />
 						</div><!-- /input-group -->
 					</form>
 				</div>
