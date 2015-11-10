@@ -1,4 +1,6 @@
 <?php
+require 'inc/common.php';
+
 $rfid = exec('doorctl rfid_last');
 if ($rfid) {
   echo $rfid;
