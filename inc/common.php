@@ -29,5 +29,5 @@ function open_door()
 	ob_end_flush();
 	flush();
 
-	exec('doorctl door_open');
+	exec('/usr/local/bin/doorctl door_open');
 }

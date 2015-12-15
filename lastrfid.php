@@ -1,7 +1,7 @@
 <?php
 require 'inc/common.php';
 
-$rfid = exec('doorctl rfid_last');
+$rfid = exec('/usr/local/bin/doorctl rfid_last');
 if ($rfid) {
   echo $rfid;
 }
