@@ -24,14 +24,14 @@ $mail->WordWrap   = 60; // set word wrap
 
 function mailer($mail_to, $subject, $body)
 {
-	global $mail;
+  global $mail;
 
-	$mail->Subject = $subject;
-	$mail->Body = $body;
-	$mail->ClearAddresses();
-	$mail->AddAddress($mail_to);
-	$mail->Send()
-		or die('Failed to send email');
+  $mail->Subject = $subject;
+  $mail->Body = $body;
+  $mail->ClearAddresses();
+  $mail->AddAddress($mail_to);
+  $mail->Send()
+    or die('Failed to send email');
 }
 
 function mail_and_die($subject, $body)

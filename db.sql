@@ -21,7 +21,8 @@ CREATE TABLE `Users` (
   `since` date NOT NULL,
   `count` int(11) NOT NULL DEFAULT 0,
   `mac` char(40) DEFAULT NULL,
-  `rfid` char(64) DEFAULT NULL
+  `rfid` char(64) DEFAULT NULL,
+  `name` char(64) NULL
 );
 CREATE UNIQUE INDEX `IDX_Users_EMAIL` ON `Users`(`email`);
 CREATE UNIQUE INDEX `IDX_Users_PASSWORD` ON `Users`(`password`);

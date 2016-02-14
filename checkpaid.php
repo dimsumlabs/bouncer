@@ -31,4 +31,3 @@ while ($row = $result->fetchArray()) {
 
 $link->close();
 unset($link);
-
