@@ -31,7 +31,7 @@ function open_door()
 
   $context = new ZMQContext();
   $publisher = $context->getSocket(ZMQ::SOCKET_PUB);
-  $publisher->connect("ipc:///tmp/doord");
+  $publisher->connect("tcp://127.0.0.1:9000");
   usleep(100000);
   $publisher->send("OPEN");
 }

@@ -3,7 +3,7 @@ require 'inc/common.php';
 
 $context = new ZMQContext();
 $subscriber = $context->getSocket(ZMQ::SOCKET_SUB);
-$subscriber->connect("ipc:///tmp/octopusd");
+$subscriber->connect("tcp://127.0.0.1:9001");
 $subscriber->setSockOpt(ZMQ::SOCKOPT_SUBSCRIBE, "rfid_last");
 $subscriber->recv();  // Discard channel
 $rfid = $subscriber->recv();
