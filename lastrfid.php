@@ -1,7 +1,13 @@
 <?php
 require 'inc/common.php';
 
-$rfid = exec('/usr/local/bin/doorctl rfid_last');
+$context = new ZMQContext();
+$subscriber = $context->getSocket(ZMQ::SOCKET_SUB);
+$subscriber->connect("ipc:///tmp/octopusd");
+$subscriber->setSockOpt(ZMQ::SOCKOPT_SUBSCRIBE, "rfid_last");
+$subscriber->recv();  // Discard channel
+$rfid = $subscriber->recv();
+
 if ($rfid) {
   echo $rfid;
 }

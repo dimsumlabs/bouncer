@@ -29,5 +29,9 @@ function open_door()
   ob_end_flush();
   flush();
 
-  exec('/usr/local/bin/doorctl door_open');
+  $context = new ZMQContext();
+  $publisher = $context->getSocket(ZMQ::SOCKET_PUB);
+  $publisher->connect("ipc:///tmp/doord");
+  usleep(100000);
+  $publisher->send("OPEN");
 }
