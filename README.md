@@ -27,6 +27,7 @@ The SQLite DB schema create script can be found in `db.sql`.
 ## Prerequisites
 * libapache2-mod-php5
 * php5-sqlite
+* php5-zmq
 
 ## Installation
 1. `git clone` into `/var/www/html` (for example)
