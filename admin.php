@@ -5,7 +5,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
   <meta name='viewport' content='width=320'/>
   <script type="text/javascript" language="javascript"><!--
-function verify(e, ok, id, email) {
+function verify(e, ok, email, id) {
   var xhr = new XMLHttpRequest();
   xhr.open("GET", "verify.php?email="+encodeURIComponent(email)+"&ok="+ok+"&id="+id, true);
   e.disabled = true;
