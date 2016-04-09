@@ -23,7 +23,7 @@ $link->exec("UPDATE Payments SET verified = $ok WHERE id = $paymentid")
 	or mail_and_die('link->exec UPDATE Payments error', __FILE__);
 
 if ($ok) {
-	$link->exec("UPDATE Users SET paid_verified = (SELECT submitted FROM Payments WHERE id = $paymentid) + INTERNAL $months MONTH WHERE email = '$email2'")
+	$link->exec("UPDATE Users SET paid_verified = DATE( (SELECT submitted FROM Payments WHERE id = $paymentid), '+$months MONTH') WHERE email = '$email2'")
 		or mail_and_die('link->exec UPDATE Users error', __FILE__);
 }
 else {
