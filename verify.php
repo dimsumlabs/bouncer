@@ -14,16 +14,10 @@ $result = $link->query("SELECT email,amount FROM Payments WHERE id = $paymentid;
 
 if ($row = $result->fetchArray())
 	$amount = $row['amount'];
-if ($amount == '150')
+if ($amount < '1500')
 	$months = 1;
-else if ($amount == '500')
-	$months = 1;
-else if ($amount == '1800')
-	$months = 12;
-else if ($amount == '6000')
-	$months = 12;
 else
-	mail_and_die('wrong amount', __FILE__);
+	$months = 12;
 
 $link->exec("UPDATE Payments SET verified = $ok WHERE id = $paymentid")
 	or mail_and_die('link->exec UPDATE Payments error', __FILE__);
