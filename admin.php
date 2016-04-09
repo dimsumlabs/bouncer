@@ -25,7 +25,6 @@ function verify(e, ok, email, id) {
   <thead>
    <tr>
     <th>E-mail</th>
-    <th>Name</th>
     <th>Submitted</th>
     <th>Amount</th>
     <th>Verified?</th>
@@ -35,13 +34,12 @@ function verify(e, ok, email, id) {
 require 'inc/mailer.php';
 require 'inc/db.php';
 
-$result = $link->query("SELECT id,name,email,DATE(submitted) as submitted,amount FROM Payments WHERE verified IS NULL;")
+$result = $link->query("SELECT id,email,date(submitted) AS submitted,amount FROM Payments WHERE verified IS NULL;")
 	or mail_and_die('link->query SELECT error', __FILE__);
 
 while ($row = $result->fetchArray()) {?>
    <tr>
     <td><?php echo $row['email']; ?></td>
-    <td><?php echo $row['name']; ?></td>
     <td><?php echo $row['submitted']; ?></td>
     <td><?php echo $row['amount']; ?></td>
     <td>
