@@ -7,7 +7,7 @@
   <script type="text/javascript" language="javascript"><!--
 function verify(e, ok, email, id) {
   var xhr = new XMLHttpRequest();
-  xhr.open("GET", "verify.php?email="+encodeURIComponent(email)+"&ok="+ok+"&id="+id, true);
+  xhr.open("GET", "api/verify.php?email="+encodeURIComponent(email)+"&ok="+ok+"&id="+id, true);
   e.disabled = true;
   xhr.onreadystatechange = function() {
     if (this.readyState === 4) {
