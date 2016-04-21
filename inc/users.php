@@ -59,6 +59,6 @@ function submit_payment($email, $amount, $name = NULL)
     $neworold = "New";
   else
     $neworold = "Old";
-  mailer('finances@dimsumlabs.com', "$neworold member: $email, paid $amount for $months month(s).", '-- '.__FILE__);
+  mailer('accounts@d'.'imsumlabs.com', "$neworold member: $email, paid $amount for $months month(s).", '-- '.__FILE__);
 }
 
