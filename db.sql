@@ -35,4 +35,4 @@ CREATE TRIGGER [UpdateLastTime]
   FOR EACH ROW
   BEGIN
     UPDATE Users SET last_update = CURRENT_TIMESTAMP WHERE id = old.id;
-  END
+  END;
