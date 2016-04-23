@@ -10,7 +10,7 @@ if ($mac)
 else
 	$mac2 = 'whatever';
 
-$link->exec("UPDATE Users SET count = count + 1 WHERE DATE('now') <= MAX(IFNULL(paid_verified,0),IFNULL(paid,0)) AND mac = '$mac2'")
+$link->exec("UPDATE Users SET count = count + 1, last_seen = DATETIME('now') WHERE DATE('now') <= MAX(IFNULL(paid_verified,0),IFNULL(paid,0)) AND mac = '$mac2'")
 	or mail_and_die('link->exec UPDATE error', __FILE__);
 
 if ($link->changes() == 1)
