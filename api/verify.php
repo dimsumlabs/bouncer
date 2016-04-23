@@ -2,6 +2,7 @@
 require 'inc/common.php';
 require 'inc/mailer.php';
 require 'inc/db.php';
+require 'inc/users.php';
 
 $paymentid = (int)$_GET['id'];
 $ok = (int)$_GET['ok'];
@@ -14,10 +15,7 @@ $result = $link->query("SELECT email,amount FROM Payments WHERE id = $paymentid;
 
 if ($row = $result->fetchArray())
 	$amount = $row['amount'];
-if ($amount < '1500')
-	$months = 1;
-else
-	$months = 12;
+$months = amount_to_months($amount);
 
 $link->exec("UPDATE Payments SET verified = $ok WHERE id = $paymentid")
 	or mail_and_die('link->exec UPDATE Payments error', __FILE__);
