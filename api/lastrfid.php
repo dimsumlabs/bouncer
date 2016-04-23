@@ -1,5 +1,5 @@
 <?php
-require 'inc/common.php';
+require dirname(__FILE__) . '/inc/common.php';
 
 $context = new ZMQContext();
 $subscriber = $context->getSocket(ZMQ::SOCKET_SUB);

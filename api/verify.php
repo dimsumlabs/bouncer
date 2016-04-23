@@ -1,8 +1,8 @@
 <?php
-require '../inc/common.php';
-require '../inc/mailer.php';
-require '../inc/db.php';
-require '../inc/users.php';
+require dirname(__FILE__) . '/../inc/common.php';
+require dirname(__FILE__) . '/../inc/mailer.php';
+require dirname(__FILE__) . '/../inc/db.php';
+require dirname(__FILE__) . '/../inc/users.php';
 
 $paymentid = (int)$_GET['id'];
 $ok = (int)$_GET['ok'];

@@ -1,6 +1,6 @@
 <?php
-require '../inc/common.php';
-require '../inc/users.php';
+require dirname(__FILE__) . '/../inc/common.php';
+require dirname(__FILE__) . '/../inc/users.php';
 
 
 if ($_SERVER['REQUEST_METHOD'] != 'POST') {

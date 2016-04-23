@@ -2,8 +2,8 @@
 // Add this to a daily cronjob using curl or somesuch:
 // 0 6 * * * /usr/bin/curl http://localhost/api/checkpaid.php
 
-require '../inc/mailer.php';
-require '../inc/db.php';
+require dirname(__FILE__) . '/../inc/mailer.php';
+require dirname(__FILE__) . '/../inc/db.php';
 
 
 $subject = 'Dim Sum Labs membership reminder 點心樂部会员资格到期提醒';

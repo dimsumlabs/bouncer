@@ -1,6 +1,6 @@
 <?php
-require_once 'mailer.php';
-require_once 'db.php';
+require_once dirname(__FILE__) . '/mailer.php';
+require_once dirname(__FILE__) . '/db.php';
 
 
 function amount_to_months($amount)

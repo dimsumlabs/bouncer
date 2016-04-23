@@ -1,7 +1,7 @@
 <?php
-require '../inc/common.php';
-require '../inc/mailer.php';
-require '../inc/db.php';
+require dirname(__FILE__) . '/../inc/common.php';
+require dirname(__FILE__) . '/../inc/mailer.php';
+require dirname(__FILE__) . '/../inc/db.php';
 
 
 $rfid = $_POST['rfid'];
