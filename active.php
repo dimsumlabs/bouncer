@@ -11,22 +11,30 @@
   <thead>
    <tr>
     <th>E-mail</th>
-    <th>Since</th>
-    <th>Paid</th>
+    <th>Name</th>
+    <th>Member since</th>
+    <th>Last seen on</th>
+    <th>Paid until (self)</th>
+    <th>Paid until (verified)</th>
+    <th>Verified?</th>
    </tr>
   </thead>
   <tbody><?php
 require 'inc/mailer.php';
 require 'inc/db.php';
 
-$result = $link->query("SELECT email,DATE(since) AS since,paid FROM Users WHERE paid >= DATE('now') ORDER BY email;")
+$result = $link->query("SELECT email,name,DATE(since) AS since,last_seen,paid,paid_verified,IFNULL(paid_verified,0)<DATE('now') AS expired FROM Users WHERE paid >= DATE('now') ORDER BY email;")
 	or mail_and_die('link->query SELECT error: '.$link->lastErrorMsg, __FILE__);
 
 while ($row = $result->fetchArray()) {?>
    <tr>
     <td><?php $i = filter_var($row['email'], FILTER_VALIDATE_EMAIL); if ($i) echo "<a href='mailto:$row[email]'>"; echo $row['email']; if ($i) echo '</a>'; ?></td>
+    <td><?php echo $row['name']; ?></td>
     <td><?php echo $row['since']; ?></td>
+    <td><?php echo $row['last_seen']; ?></td>
     <td><?php echo $row['paid']; ?></td>
+    <td><?php echo $row['paid_verified']; ?></td>
+    <td><?php echo $row['expired']?'UNVERIFIED':''; ?></td>
    </tr><?php
 }
 

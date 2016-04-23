@@ -19,7 +19,8 @@ if ($rfid)
 else
         $rfid2 = '';
 
-$link->exec('UPDATE Users SET count = count + 1'.$mac2.$rfid2." WHERE DATE('now') <= paid AND password = '$password2'")
+// Give new members the benefit of the doubt (trust, but verify):
+$link->exec('UPDATE Users SET count = count + 1'.$mac2.$rfid2.", last_seen = DATETIME('now') WHERE DATE('now') <= MAX(IFNULL(paid,0),IFNULL(paid_verified,0)) AND password = '$password2'")
 	or mail_and_die('link->exec UPDATE error', __FILE__);
 
 if ($link->changes() != 1)
