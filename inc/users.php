@@ -2,6 +2,17 @@
 require_once 'mailer.php';
 require_once 'db.php';
 
+
+function amount_to_months($amount)
+{
+  if ($amount >= 1500)
+    return 12;
+  else if ($amount >= 150)
+    return 1;
+  else
+    return 0;
+}
+
 function submit_payment($email, $amount, $name = NULL)
 {
   global $link;
@@ -25,19 +36,24 @@ function submit_payment($email, $amount, $name = NULL)
   $crc = crc32($salt.strtoupper($email)) & 0x7FFFFFFF;//remove sign
   $password = sprintf("%06u", $crc % 1000000);
 
-  $email2 = $link->escapeString($email);
+  $email2 = $link->escapeString(trim($email));
   $password2 = $link->escapeString($password);
   $salt2 = $link->escapeString($salt);
-  $name2 = $link->escapeString($name);
+  $name2 = $link->escapeString(trim($name));
 
-  $link->exec("INSERT OR IGNORE INTO Users (email,since,name) VALUES('$email2',DATETIME('now'),'$name2')")
-    or mail_and_die('link->exec INSERT Users error', __FILE__);
+  if (!empty($name2)) {
+    $link->exec("INSERT OR IGNORE INTO Users (email,name) VALUES('$email2','$name2')")
+      or mail_and_die('link->exec INSERT Users error', __FILE__);
+  }
+  else {
+    $link->exec("INSERT OR IGNORE INTO Users (email) VALUES('$email2')")
+      or mail_and_die('link->exec INSERT Users error', __FILE__);
+  }
   $isnew = $link->changes() == 1;
 
   $link->exec("INSERT INTO Payments (email, submitted, amount) VALUES('$email2', DATETIME('now'), $amount)")
     or mail_and_die('link->exec INSERT Payments error', __FILE__);
 
-  // Give new members the benefit of the doubt (trust, but verify):
   // FIXME: might fail because of unique password (change salt)
   $link->exec("UPDATE Users SET paid = DATE(MAX(IFNULL(paid,0), DATE('now')),'+$months MONTH'), salt = '$salt2', password = '$password2' WHERE email = '$email2'")
     or mail_and_die('link->exec UPDATE error', __FILE__);
