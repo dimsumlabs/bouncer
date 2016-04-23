@@ -15,6 +15,12 @@ $link->exec("UPDATE Users SET count = count + 1 WHERE DATE('now') <= paid AND ma
 
 if ($link->changes() == 1)
 {
+        ignore_user_abort(true);
+        header('Location: welcomeback.html', true, 303);
+        header("Connection: close");
+        header("Content-Length: 0");
+        ob_end_flush();
+        flush();
 	open_door();
 }
 else {
