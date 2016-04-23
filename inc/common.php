@@ -21,14 +21,6 @@ function find_mac()
 
 function open_door()
 {
-  ignore_user_abort(true);
-
-  header('Location: welcomeback.html', true, 303);
-  header("Connection: close");
-  header("Content-Length: 0");
-  ob_end_flush();
-  flush();
-
   $context = new ZMQContext();
   $publisher = $context->getSocket(ZMQ::SOCKET_PUB);
   $publisher->connect("tcp://127.0.0.1:9000");

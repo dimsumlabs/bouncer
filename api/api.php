@@ -1,6 +1,6 @@
 <?php
-require 'inc/common.php';
-require 'inc/db.php';
+require '../inc/common.php';
+require '../inc/db.php';
 
 $rfid = $_GET['rfid'];
 if ($rfid) {

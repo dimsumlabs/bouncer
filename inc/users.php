@@ -19,15 +19,8 @@ function submit_payment($email, $amount, $name = NULL)
 
   if (!filter_var($email, FILTER_VALIDATE_EMAIL))
     mail_and_die('invalid email', __FILE__);
-  if ($amount == '150')
-    $months = 1;
-  else if ($amount == '500')
-    $months = 1;
-  else if ($amount == '1800')
-    $months = 12;
-  else if ($amount == '6000')
-    $months = 12;
-  else
+  $months = amount_to_months($amount);
+  if ($months == 0)
     mail_and_die('wrong amount', __FILE__);
 
   // TODO: generate this salt

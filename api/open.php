@@ -1,7 +1,7 @@
 <?php
-require 'inc/common.php';
-require 'inc/mailer.php';
-require 'inc/db.php';
+require '../inc/common.php';
+require '../inc/mailer.php';
+require '../inc/db.php';
 
 
 $rfid = $_POST['rfid'];
@@ -25,10 +25,16 @@ $link->exec('UPDATE Users SET count = count + 1'.$mac2.$rfid2.", last_seen = DAT
 
 if ($link->changes() != 1)
 {
-	header('Location: accessdenied.html', true, 303);
+	header('Location: ../accessdenied.html', true, 303);
 }
 else
 {
+        ignore_user_abort(true);
+        header('Location: ../welcomeback.html', true, 303);
+        header("Connection: close");
+        header("Content-Length: 0");
+        ob_end_flush();
+        flush();
 	open_door();
 }
 $link->close();
