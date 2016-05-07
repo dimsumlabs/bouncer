@@ -47,8 +47,9 @@ function enableSubmit() {
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12">
-				<h1>Dim Sum Labs Sign-up Page</h1>
+				<h1>Dim Sum Labs Payment Page</h1>
 				<h1>加入點心樂部會員</h1>
+				<h4>Please enter bellow the amount of HKD you have paid.</h4>
 			</div>
 		</div>
 
@@ -59,6 +60,7 @@ function enableSubmit() {
 					<div class="form-group">
 						<label for="email">E-mail | 郵件地址</label>
 						<input id="email" type="email" class="form-control" name="email" required />
+						<span id="helpBlock" class="help-block">If you are not a member yet please first fill in the <a href="http://www.dimsumlabs.com/new-member-form/" target="_blank">form</a> on our website</span>
 					</div>
 					<div class="form-group">
 						<label for="amount">Amount paid in cash | 會員費</label>
@@ -69,6 +71,7 @@ function enableSubmit() {
 							<option value="150">150 HKD = 1 month student 1個月學生價</option>
 							<option value="1800">1800 HKD = 12 months student 12個月學生價</option>
 						</select>
+						<span id="helpBlock" class="help-block">You can pay, by putting the money inside a labeled envelope and droping it into the payments box or through paypal (accounts@dimsumlabs.com)</span>
 					</div>
 					<div class="form-group" align="right">
 						<input type="submit" id="submit" class="btn btn-success" value="Submit｜提交"/>
