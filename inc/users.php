@@ -56,10 +56,13 @@ function submit_payment($email, $amount, $name = NULL)
   $subject = 'Welcome to Dim Sum Labs 欢迎加入點心樂部';
   $body = "Welcome! 欢迎！
 
+  Your membership has been extended for $months month(s).
+  Note that your access will be revoked if no payment was made.
+
   You can now open the door by going to http://door/
   PIN: $password
 
-  Note that your access will be revoked if no payment was made.
+  If you haven't done so already, you can also bind your Octopus card to your PIN by swiping your Octopus card before entering your PIN code.
 
   -- the script that sends out these emails";
   mailer($email, $subject, $body);
