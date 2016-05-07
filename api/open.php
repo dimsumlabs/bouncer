@@ -20,8 +20,9 @@ else
         $rfid2 = '';
 
 // Give new members the benefit of the doubt (trust, but verify):
-$link->exec('UPDATE Users SET count = count + 1'.$mac2.$rfid2.", last_seen = DATETIME('now') WHERE DATE('now') <= MAX(IFNULL(paid,0),IFNULL(paid_verified,0)) AND password = '$password2'")
-	or mail_and_die('link->exec UPDATE error', __FILE__);
+$query = 'UPDATE Users SET count = count + 1'.$mac2.$rfid2.", last_seen = DATETIME('now') WHERE DATE('now') <= MAX(IFNULL(paid,0),IFNULL(paid_verified,0)) AND password = '$password2'";
+$link->exec($query)
+	or mail_and_die('link->exec UPDATE error', $query."\n\n-- ".__FILE__);
 
 if ($link->changes() != 1)
 {
