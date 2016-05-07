@@ -29,6 +29,9 @@ else
     $group2 = $link->escapeString($group);
     $link->exec("INSERT OR IGNORE INTO Groups (email,\"group\") VALUES('$email2','$group2')")
       or mail_and_die('link->exec INSERT error', __FILE__);
+    $msg = "Access granted: $email is a member of $group";
+    mailer('accounts@d'.'imsumlabs.com', $msg, '-- '.__FILE__);
+    die($msg);
   }
   else {
     // ?email=xxx&password=xxx  Check validity of username and password
