@@ -17,6 +17,7 @@
     <th>Paid until (self)</th>
     <th>Paid until (verified)</th>
     <th>Verified?</th>
+    <th>Laser?</th>
    </tr>
   </thead>
   <tbody><?php
@@ -35,6 +36,8 @@ while ($row = $result->fetchArray()) {?>
     <td><?php echo $row['paid']; ?></td>
     <td><?php echo $row['paid_verified']; ?></td>
     <td><?php echo $row['expired']?'UNVERIFIED':''; ?></td>
+    <td><?php echo $row['expired']?'':"<a href='api.php?email=$row[email]&group=laser'>Allow</a>" ?></td>
+
    </tr><?php
 }
 
