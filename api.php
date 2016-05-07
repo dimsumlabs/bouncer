@@ -52,7 +52,8 @@ if ($link->changes() != 1) {
   mailer('accounts@d'.'imsumlabs.com', 'Access denied', "Email:$email\nRFID:$rfid\nGroup:$group\n");
 }
 else {
-  header('HTTP/1.1 204 No Content');
+  header('HTTP/1.1 200 OK');
 }
+
 $link->close();
 unset($link);
