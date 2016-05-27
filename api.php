@@ -11,8 +11,9 @@ if ($rfid) {
   if ($group) {
     // ?rfid=xxx&group=xxx  Check membership of group (by rfid)
     $group2 = $link->escapeString($group);
-    $link->exec("UPDATE Groups SET count = count + 1 WHERE \"group\" = '$group2' AND email = (SELECT email FROM Users WHERE DATE('now') <= MAX(IFNULL(paid,0),IFNULL(paid_verified,0)) AND rfid = '$rfid2')")
-      or mail_and_die('link->exec UPDATE error(0)', __FILE__);
+    $query = "UPDATE Groups SET count = count + 1 WHERE \"group\" = '$group2' AND email = (SELECT email FROM Users WHERE DATE('now') <= MAX(IFNULL(paid,0),IFNULL(paid_verified,0)) AND rfid = '$rfid2')";
+    $link->exec($query)
+      or mail_and_die('link->exec UPDATE error in'.__FILE__, $query);
   }
   else {
     // ?rfid=xxx  Check validity of member (by rfid)
