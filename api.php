@@ -13,7 +13,7 @@ if ($rfid) {
     $group2 = $link->escapeString($group);
     $query = "UPDATE Groups SET count = count + 1 WHERE \"group\" = '$group2' AND email = (SELECT email FROM Users WHERE DATE('now') <= MAX(IFNULL(paid,0),IFNULL(paid_verified,0)) AND rfid = '$rfid2')";
     $link->exec($query)
-      or mail_and_die('link->exec UPDATE error in'.__FILE__, $query."\n\n".$link->lastErrorMsg);
+      or mail_and_die('link->exec UPDATE error in'.__FILE__, $query."\n\n".$link->lastErrorCode);
   }
   else {
     // ?rfid=xxx  Check validity of member (by rfid)
