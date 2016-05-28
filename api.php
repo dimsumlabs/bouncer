@@ -13,12 +13,12 @@ if ($rfid) {
     $group2 = $link->escapeString($group);
     $query = "UPDATE Groups SET count = count + 1 WHERE \"group\" = '$group2' AND email = (SELECT email FROM Users WHERE DATE('now') <= MAX(IFNULL(paid,0),IFNULL(paid_verified,0)) AND rfid = '$rfid2')";
     $link->exec($query)
-      or mail_and_die('link->exec UPDATE error in'.__FILE__, $query."\n\n".$link->lastErrorCode);
+      or mail_and_die('link->exec UPDATE error in '.__FILE__.' line '.__LINE__, $link->lastErrorMsg());
   }
   else {
     // ?rfid=xxx  Check validity of member (by rfid)
     $link->exec("UPDATE Users SET count = count + 1, last_seen = DATETIME('now') WHERE DATE('now') <= MAX(IFNULL(paid,0),IFNULL(paid_verified,0)) AND rfid = '$rfid2'")
-      or mail_and_die('link->exec UPDATE error(1)', __FILE__);
+      or mail_and_die('link->exec UPDATE error in '.__FILE__.' line '.__LINE__, $link->lastErrorMsg());
   }
 }
 else
@@ -29,7 +29,7 @@ else
     // ?email=xxx&group=xxx  Add user to group (by email)
     $group2 = $link->escapeString($group);
     $link->exec("INSERT OR IGNORE INTO Groups (email,\"group\") VALUES('$email2','$group2')")
-      or mail_and_die('link->exec INSERT error', __FILE__);
+      or mail_and_die('link->exec INSERT error in '.__FILE__.' line '.__LINE__, $link->lastErrorMsg());
     $msg = "Access granted: $email is a member of $group";
     mailer('accounts@d'.'imsumlabs.com', $msg, '-- '.__FILE__);
     die($msg);
@@ -41,7 +41,7 @@ else
     $passwordx = sprintf("%08x", crc32($salt.strtoupper($email)));
     $password2 = $link->escapeString($password);
     $link->exec("UPDATE Users SET count = count + 1, last_seen = DATETIME('now') WHERE DATE('now') <= MAX(IFNULL(paid,0),IFNULL(paid_verified,0)) AND email = '$email2' AND password = '$password2'")
-      or mail_and_die('link->exec UPDATE error(2)', __FILE__);
+      or mail_and_die('link->exec UPDATE error in '.__FILE__.' line '.__LINE__, $link->lastErrorMsg());
   }
 }
 
