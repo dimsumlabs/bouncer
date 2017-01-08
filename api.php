@@ -51,9 +51,11 @@ if ($link->changes() != 1) {
     $email = $link->querySingle("SELECT email FROM Users WHERE rfid = '$rfid2'");
   }
   mailer('accounts@d'.'imsumlabs.com', 'Access denied', "Email:$email\nRFID:$rfid\nGroup:$group\n");
+  shell_exec("/usr/local/bin/dsl_denied");
 }
 else {
   header('HTTP/1.1 200 OK');
+  shell_exec("/usr/local/bin/dsl_allowed");
 }
 
 $link->close();
